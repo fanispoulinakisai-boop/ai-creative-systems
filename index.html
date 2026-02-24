@@ -4,11 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Creative Systems</title>
-    <!-- Cal.com embed script -->
+    <!-- Cal.com embed scripts -->
     <script type="text/javascript">
       (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+      
+      // Director Session
       Cal("init", "director-session", {origin:"https://app.cal.com"});
       Cal.ns["director-session"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+      
+      // Build Session
+      Cal("init", "build-session", {origin:"https://app.cal.com"});
+      Cal.ns["build-session"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+      
+      // Intensive
+      Cal("init", "intensive", {origin:"https://app.cal.com"});
+      Cal.ns["intensive"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
     </script>
   </head>
   <body>
