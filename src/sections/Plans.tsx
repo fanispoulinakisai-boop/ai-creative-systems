@@ -200,16 +200,30 @@ const Plans = () => {
                 >
                   Book Now
                 </button>
+              ) : plan.name === 'Build Session' ? (
+                <button
+                  data-cal-link="machinepoem/build-session"
+                  data-cal-namespace="build-session"
+                  data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                  className="w-full py-3 rounded-xl text-center font-semibold transition-all duration-300 mt-auto bg-orange text-white hover:bg-orange/90 shadow-lg shadow-orange/25 cursor-pointer"
+                >
+                  Book Now
+                </button>
+              ) : plan.name === 'Intensive' ? (
+                <button
+                  data-cal-link="machinepoem/intensive"
+                  data-cal-namespace="intensive"
+                  data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                  className="w-full py-3 rounded-xl text-center font-semibold transition-all duration-300 mt-auto glass-jelly hover:bg-white/30 cursor-pointer"
+                >
+                  Book Now
+                </button>
               ) : (
                 <a
                   href="#contact"
-                  className={`w-full py-3 rounded-xl text-center font-semibold transition-all duration-300 mt-auto ${
-                    plan.popular
-                      ? 'bg-orange text-white hover:bg-orange/90 shadow-lg shadow-orange/25'
-                      : 'glass-jelly hover:bg-white/30'
-                  }`}
+                  className="w-full py-3 rounded-xl text-center font-semibold transition-all duration-300 mt-auto glass-jelly hover:bg-white/30"
                 >
-                  {plan.price === 'Contact' ? 'Request Proposal' : 'Book Now'}
+                  Request Proposal
                 </a>
               )}
             </div>
