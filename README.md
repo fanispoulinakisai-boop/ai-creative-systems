@@ -1,4 +1,4 @@
-# AI Creative Systems
+# Methodic Studio
 
 One-on-one sessions with a creative director who spent 15 years behind the camera.
 
