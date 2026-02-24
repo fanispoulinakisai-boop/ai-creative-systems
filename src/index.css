@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 100% 97%;
+    --foreground: 240 25% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 25% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 25% 14%;
+    --primary: 18 100% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 10% 45%;
+    --accent: 190 100% 50%;
+    --accent-foreground: 240 25% 14%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 18 100% 60%;
+    --radius: 2rem;
+    
+    /* Custom glassy colors */
+    --orange: #FF6B35;
+    --cyan: #00D4FF;
+    --yellow: #FFD93D;
+    --purple: #A855F7;
+    --pink: #FF6B9D;
+    --cream: #FFF9F0;
+    --peach: #FFE4D6;
+    --lavender: #F0E6FF;
+    --mint: #E6FFF5;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-cream text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  /* The REAL glassy effect - thick, glossy, jelly-like, matching reference */
+  .glass-jelly {
+    position: relative;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px) saturate(200%);
+    -webkit-backdrop-filter: blur(16px) saturate(200%);
+    border-radius: 2.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 
+      /* Inner highlight */
+      inset 0 2px 8px rgba(255, 255, 255, 0.5),
+      inset 0 -1px 4px rgba(0, 0, 0, 0.05),
+      /* Outer glow/shadow */
+      0 8px 32px rgba(0, 0, 0, 0.1),
+      0 4px 16px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+  }
+  
+  /* Top glossy highlight */
+  .glass-jelly::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 35%;
+    background: linear-gradient(180deg, 
+      rgba(255, 255, 255, 0.7) 0%, 
+      rgba(255, 255, 255, 0.3) 40%,
+      rgba(255, 255, 255, 0) 100%);
+    border-radius: 50% 50% 0 0;
+    pointer-events: none;
+    filter: blur(2px);
+  }
+  
+  /* Colored glass variants - more saturated like reference */
+  .glass-orange {
+    background: linear-gradient(135deg, 
+      rgba(255, 107, 53, 0.5) 0%, 
+      rgba(255, 140, 90, 0.3) 50%,
+      rgba(255, 107, 53, 0.2) 100%);
+    border-color: rgba(255, 180, 140, 0.7);
+    box-shadow: 
+      inset 0 2px 8px rgba(255, 200, 170, 0.6),
+      inset 0 -1px 4px rgba(180, 70, 30, 0.1),
+      0 8px 32px rgba(255, 107, 53, 0.2),
+      0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .glass-cyan {
+    background: linear-gradient(135deg, 
+      rgba(0, 212, 255, 0.5) 0%, 
+      rgba(100, 230, 255, 0.3) 50%,
+      rgba(0, 212, 255, 0.2) 100%);
+    border-color: rgba(150, 240, 255, 0.7);
+    box-shadow: 
+      inset 0 2px 8px rgba(180, 250, 255, 0.6),
+      inset 0 -1px 4px rgba(0, 150, 180, 0.1),
+      0 8px 32px rgba(0, 212, 255, 0.2),
+      0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .glass-yellow {
+    background: linear-gradient(135deg, 
+      rgba(255, 217, 61, 0.5) 0%, 
+      rgba(255, 235, 120, 0.3) 50%,
+      rgba(255, 217, 61, 0.2) 100%);
+    border-color: rgba(255, 240, 150, 0.7);
+    box-shadow: 
+      inset 0 2px 8px rgba(255, 250, 180, 0.6),
+      inset 0 -1px 4px rgba(200, 170, 30, 0.1),
+      0 8px 32px rgba(255, 217, 61, 0.2),
+      0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .glass-purple {
+    background: linear-gradient(135deg, 
+      rgba(168, 85, 247, 0.5) 0%, 
+      rgba(200, 130, 255, 0.3) 50%,
+      rgba(168, 85, 247, 0.2) 100%);
+    border-color: rgba(220, 170, 255, 0.7);
+    box-shadow: 
+      inset 0 2px 8px rgba(230, 200, 255, 0.6),
+      inset 0 -1px 4px rgba(120, 50, 180, 0.1),
+      0 8px 32px rgba(168, 85, 247, 0.2),
+      0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .glass-pink {
+    background: linear-gradient(135deg, 
+      rgba(255, 107, 157, 0.5) 0%, 
+      rgba(255, 150, 190, 0.3) 50%,
+      rgba(255, 107, 157, 0.2) 100%);
+    border-color: rgba(255, 190, 210, 0.7);
+    box-shadow: 
+      inset 0 2px 8px rgba(255, 210, 220, 0.6),
+      inset 0 -1px 4px rgba(180, 60, 100, 0.1),
+      0 8px 32px rgba(255, 107, 157, 0.2),
+      0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Original glass for subtle cards */
+  .glass {
+    @apply bg-white/25 backdrop-blur-xl border border-white/40;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  }
+  
+  .glass-strong {
+    @apply bg-white/40 backdrop-blur-2xl border border-white/50;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  }
+  
+  .glass-card {
+    @apply rounded-3xl glass;
+  }
+  
+  .glass-card-strong {
+    @apply rounded-3xl glass-strong;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, var(--orange), var(--purple));
+  }
+  
+  .bg-cream {
+    background-color: var(--cream);
+  }
+  
+  .bg-peach {
+    background-color: var(--peach);
+  }
+  
+  .bg-lavender {
+    background-color: var(--lavender);
+  }
+  
+  .bg-mint {
+    background-color: var(--mint);
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-float-delayed {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: -3s;
+  }
+  
+  .animate-float-slow {
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  .animate-pulse-soft {
+    animation: pulse-soft 4s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(1deg);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
