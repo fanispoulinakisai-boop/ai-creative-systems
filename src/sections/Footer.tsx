@@ -5,7 +5,7 @@ const Footer = () => {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
             <span className="font-display text-xl font-bold text-white">
-              AI Creative Systems
+              Methodic
             </span>
           </div>
 
@@ -26,7 +26,7 @@ const Footer = () => {
               fanis@futurevideo.media
             </p>
             <p className="text-sm">
-              © 2026 AI Creative Systems. All rights reserved.
+              © 2026 Methodic. All rights reserved.
             </p>
           </div>
         </div>
