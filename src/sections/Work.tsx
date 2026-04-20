@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Play, X } from 'lucide-react';
+import ScrollReveal, { StaggerContainer } from '@/components/ScrollReveal';
 
 interface WorkItem {
   id: string;
@@ -92,21 +93,25 @@ const Work = () => {
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
-          <div>
-            <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-4">
-              Selected Work
+          <ScrollReveal direction="left">
+            <div>
+              <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-4">
+                Selected Work
+              </p>
+              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">
+                What AI Can Do
+              </h2>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal direction="right">
+            <p className="text-muted-foreground leading-relaxed whitespace-nowrap">
+              A mix of AI-generated campaigns and traditional commercial work.&nbsp;<br className="hidden sm:block" />This is the production standard we build toward.
             </p>
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">
-              What AI Can Do
-            </h2>
-          </div>
-          <p className="text-muted-foreground leading-relaxed whitespace-nowrap">
-            A mix of AI-generated campaigns and traditional commercial work.&nbsp;<br className="hidden sm:block" />This is the production standard we build toward.
-          </p>
+          </ScrollReveal>
         </div>
 
         {/* Work grid - 7 tiles */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.1}>
           {works.map((work) => (
             <div
               key={work.id}
@@ -158,7 +163,7 @@ const Work = () => {
               </div>
             </div>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
 
       {/* Modal */}
