@@ -4,12 +4,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import ScrollReveal from '@/components/ScrollReveal';
 
 const FAQ = () => {
   const faqs = [
     {
       question: 'Who is this best suited for?',
-      answer: "This is designed for agencies, marketing teams, founders, and creative leads who want to integrate AI into real campaign production — not just experiment with tools.\n\nBeginners are welcome, but the focus is always on building practical, production-ready systems.",
+      answer: "This is designed for agencies, marketing teams, founders, and creative leads who want to integrate AI into real campaign production - not just experiment with tools.\n\nBeginners are welcome, but the focus is always on building practical, production-ready systems.",
     },
     {
       question: 'What tools and platforms do you work with?',
@@ -38,31 +39,37 @@ const FAQ = () => {
       <div className="max-w-3xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-12">
-          <p className="text-sm font-medium text-foreground/60 uppercase tracking-wider mb-4">
-            Questions
-          </p>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground">
-            The Basics
-          </h2>
+          <ScrollReveal>
+            <p className="text-sm font-medium text-foreground/60 uppercase tracking-wider mb-4">
+              Questions
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground">
+              The Basics
+            </h2>
+          </ScrollReveal>
         </div>
 
         {/* Accordion */}
-        <Accordion type="single" collapsible className="space-y-4">
-          {faqs.map((faq, index) => (
-            <AccordionItem 
-              key={index} 
-              value={`item-${index}`}
-              className="glass-jelly border-none px-6 data-[state=open]:bg-white/20"
-            >
-              <AccordionTrigger className="text-left font-display text-lg font-semibold hover:no-underline py-5">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-foreground/70 leading-relaxed pb-5 whitespace-pre-line">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <ScrollReveal delay={0.2}>
+          <Accordion type="single" collapsible className="space-y-4">
+            {faqs.map((faq, index) => (
+              <AccordionItem 
+                key={index} 
+                value={`item-${index}`}
+                className="glass-jelly border-none px-6 data-[state=open]:bg-white/20"
+              >
+                <AccordionTrigger className="text-left font-display text-lg font-semibold hover:no-underline py-5">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-foreground/70 leading-relaxed pb-5 whitespace-pre-line">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </ScrollReveal>
       </div>
     </section>
   );
