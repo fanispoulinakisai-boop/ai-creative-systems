@@ -1,7 +1,7 @@
 import { Toaster } from '@/components/ui/sonner';
 import CustomCursor from './components/CustomCursor';
 import Header from './sections/Header';
-import Hero3D from './sections/Hero3D';
+import Hero from './sections/Hero';
 import WhatThisIs from './sections/WhatThisIs';
 import Plans from './sections/Plans';
 import Different from './sections/Different';
@@ -16,7 +16,7 @@ function App() {
     <div className="min-h-screen bg-cream cursor-none md:cursor-none">
       <CustomCursor />
       <Header />
-      <Hero3D />
+      <Hero />
       <WhatThisIs />
       <Plans />
       <Different />
