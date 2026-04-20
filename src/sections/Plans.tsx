@@ -1,4 +1,6 @@
 import { Clock, Zap, Layers, Briefcase } from 'lucide-react';
+import ScrollReveal, { StaggerContainer } from '@/components/ScrollReveal';
+import TiltCard from '@/components/TiltCard';
 
 const Plans = () => {
   const plans = [
@@ -109,126 +111,131 @@ const Plans = () => {
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-sm font-medium text-foreground/60 uppercase tracking-wider mb-4">
-            Work With Me
-          </p>
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-            Live, Hands-On Sessions
-          </h2>
-          <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-            I build in real time. You see the full process. Every session is recorded.
-          </p>
+          <ScrollReveal>
+            <p className="text-sm font-medium text-foreground/60 uppercase tracking-wider mb-4">
+              Work With Me
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+              Live, Hands-On Sessions
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.2}>
+            <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
+              I build in real time. You see the full process. Every session is recorded.
+            </p>
+          </ScrollReveal>
         </div>
 
         {/* Plans grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.12}>
           {plans.map((plan, index) => (
-            <div 
-              key={index}
-              className={`relative ${getGlassClass(plan.color)} p-6 flex flex-col hover:scale-[1.02] transition-all duration-300 ${
+            <TiltCard key={index} className="rounded-3xl" tiltAmount={6}>
+              <div className={`relative ${getGlassClass(plan.color)} p-6 flex flex-col h-full hover:scale-[1.02] transition-all duration-300 ${
                 plan.popular ? 'ring-2 ring-orange/50' : ''
-              }`}
-            >
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-                  <span className="px-4 py-1.5 rounded-full bg-orange text-white text-xs font-semibold shadow-lg shadow-orange/30 whitespace-nowrap">
-                    Most Popular
-                  </span>
+              }`}>
+                {plan.popular && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+                    <span className="px-4 py-1.5 rounded-full bg-orange text-white text-xs font-semibold shadow-lg shadow-orange/30 whitespace-nowrap">
+                      Most Popular
+                    </span>
+                  </div>
+                )}
+
+                <div className={`w-12 h-12 rounded-xl ${getIconBgClass(plan.color)} flex items-center justify-center mb-4`}>
+                  <plan.icon className="w-6 h-6 text-white" />
                 </div>
-              )}
 
-              <div className={`w-12 h-12 rounded-xl ${getIconBgClass(plan.color)} flex items-center justify-center mb-4`}>
-                <plan.icon className="w-6 h-6 text-white" />
-              </div>
+                <h3 className="font-display text-2xl font-bold mb-1">{plan.name}</h3>
+                <p className="text-sm text-foreground/60 mb-4">{plan.duration}</p>
 
-              <h3 className="font-display text-2xl font-bold mb-1">{plan.name}</h3>
-              <p className="text-sm text-foreground/60 mb-4">{plan.duration}</p>
-
-              <div className="mb-4">
-                <span className="font-display text-3xl font-bold">{plan.price}</span>
-                {plan.description && <span className="text-foreground/60"> {plan.description}</span>}
-              </div>
-
-              {plan.bestFor.length > 0 && (
                 <div className="mb-4">
-                  <p className="text-xs font-semibold text-foreground/50 uppercase tracking-wider mb-2">Best for:</p>
-                  <ul className="space-y-1.5">
-                    {plan.bestFor.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm">
-                        <span className="w-1 h-1 rounded-full bg-foreground/40 mt-1.5 flex-shrink-0" />
-                        <span className="text-foreground/80">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <span className="font-display text-3xl font-bold">{plan.price}</span>
+                  {plan.description && <span className="text-foreground/60"> {plan.description}</span>}
                 </div>
-              )}
 
-              {plan.includes.length > 0 && (
-                <div className="mb-6">
-                  <p className="text-xs font-semibold text-foreground/50 uppercase tracking-wider mb-2">Includes:</p>
-                  <ul className="space-y-1.5">
-                    {plan.includes.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm">
-                        <span className="w-1 h-1 rounded-full bg-foreground/40 mt-1.5 flex-shrink-0" />
-                        <span className="text-foreground/80">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+                {plan.bestFor.length > 0 && (
+                  <div className="mb-4">
+                    <p className="text-xs font-semibold text-foreground/50 uppercase tracking-wider mb-2">Best for:</p>
+                    <ul className="space-y-1.5">
+                      {plan.bestFor.map((item, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm">
+                          <span className="w-1 h-1 rounded-full bg-foreground/40 mt-1.5 flex-shrink-0" />
+                          <span className="text-foreground/80">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
-              {plan.price === 'Contact' && (
-                <div className="mb-6 flex-grow">
-                  <p className="text-sm text-foreground/70 mb-4">For agencies and marketing teams.</p>
-                  <ul className="space-y-1.5">
-                    {plan.bestFor.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm">
-                        <span className="w-1 h-1 rounded-full bg-foreground/40 mt-1.5 flex-shrink-0" />
-                        <span className="text-foreground/80">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+                {plan.includes.length > 0 && (
+                  <div className="mb-6">
+                    <p className="text-xs font-semibold text-foreground/50 uppercase tracking-wider mb-2">Includes:</p>
+                    <ul className="space-y-1.5">
+                      {plan.includes.map((item, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm">
+                          <span className="w-1 h-1 rounded-full bg-foreground/40 mt-1.5 flex-shrink-0" />
+                          <span className="text-foreground/80">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
-              {plan.name === 'Director Session' ? (
-                <button
-                  data-cal-link="machinepoem/director-session"
-                  data-cal-namespace="director-session"
-                  data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-                  className="w-full py-3 rounded-xl text-center font-semibold transition-all duration-300 mt-auto glass-jelly hover:bg-white/30 cursor-pointer"
-                >
-                  Book Now
-                </button>
-              ) : plan.name === 'Build Session' ? (
-                <button
-                  data-cal-link="machinepoem/build-session"
-                  data-cal-namespace="build-session"
-                  data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-                  className="w-full py-3 rounded-xl text-center font-semibold transition-all duration-300 mt-auto bg-orange text-white hover:bg-orange/90 shadow-lg shadow-orange/25 cursor-pointer"
-                >
-                  Book Now
-                </button>
-              ) : plan.name === 'Intensive' ? (
-                <button
-                  data-cal-link="machinepoem/intensive"
-                  data-cal-namespace="intensive"
-                  data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-                  className="w-full py-3 rounded-xl text-center font-semibold transition-all duration-300 mt-auto glass-jelly hover:bg-white/30 cursor-pointer"
-                >
-                  Book Now
-                </button>
-              ) : (
-                <a
-                  href="#contact"
-                  className="w-full py-3 rounded-xl text-center font-semibold transition-all duration-300 mt-auto glass-jelly hover:bg-white/30"
-                >
-                  Request Proposal
-                </a>
-              )}
-            </div>
+                {plan.price === 'Contact' && (
+                  <div className="mb-6 flex-grow">
+                    <p className="text-sm text-foreground/70 mb-4">For agencies and marketing teams.</p>
+                    <ul className="space-y-1.5">
+                      {plan.bestFor.map((item, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm">
+                          <span className="w-1 h-1 rounded-full bg-foreground/40 mt-1.5 flex-shrink-0" />
+                          <span className="text-foreground/80">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {plan.name === 'Director Session' ? (
+                  <button
+                    data-cal-link="machinepoem/director-session"
+                    data-cal-namespace="director-session"
+                    data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                    className="w-full py-3 rounded-xl text-center font-semibold transition-all duration-300 mt-auto glass-jelly hover:bg-white/30 cursor-pointer"
+                  >
+                    Book Now
+                  </button>
+                ) : plan.name === 'Build Session' ? (
+                  <button
+                    data-cal-link="machinepoem/build-session"
+                    data-cal-namespace="build-session"
+                    data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                    className="w-full py-3 rounded-xl text-center font-semibold transition-all duration-300 mt-auto bg-orange text-white hover:bg-orange/90 shadow-lg shadow-orange/25 cursor-pointer"
+                  >
+                    Book Now
+                  </button>
+                ) : plan.name === 'Intensive' ? (
+                  <button
+                    data-cal-link="machinepoem/intensive"
+                    data-cal-namespace="intensive"
+                    data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                    className="w-full py-3 rounded-xl text-center font-semibold transition-all duration-300 mt-auto glass-jelly hover:bg-white/30 cursor-pointer"
+                  >
+                    Book Now
+                  </button>
+                ) : (
+                  <a
+                    href="#contact"
+                    className="w-full py-3 rounded-xl text-center font-semibold transition-all duration-300 mt-auto glass-jelly hover:bg-white/30"
+                  >
+                    Request Proposal
+                  </a>
+                )}
+              </div>
+            </TiltCard>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );
