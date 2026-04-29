@@ -217,6 +217,114 @@
   .animate-pulse-soft {
     animation: pulse-soft 4s ease-in-out infinite;
   }
+  
+  /* Glow effects for glass shapes */
+  .glow-orange {
+    filter: drop-shadow(0 0 30px rgba(255, 107, 53, 0.4)) drop-shadow(0 0 60px rgba(255, 107, 53, 0.2));
+  }
+  
+  .glow-cyan {
+    filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.4)) drop-shadow(0 0 60px rgba(0, 212, 255, 0.2));
+  }
+  
+  .glow-yellow {
+    filter: drop-shadow(0 0 30px rgba(255, 217, 61, 0.4)) drop-shadow(0 0 60px rgba(255, 217, 61, 0.2));
+  }
+  
+  .glow-purple {
+    filter: drop-shadow(0 0 30px rgba(168, 85, 247, 0.4)) drop-shadow(0 0 60px rgba(168, 85, 247, 0.2));
+  }
+  
+  .glow-pink {
+    filter: drop-shadow(0 0 30px rgba(255, 107, 157, 0.4)) drop-shadow(0 0 60px rgba(255, 107, 157, 0.2));
+  }
+  
+  /* Button glow effects */
+  .btn-glow {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-glow::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(90deg, var(--orange), var(--purple), var(--orange));
+    background-size: 200% 100%;
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s;
+    filter: blur(12px);
+    animation: shimmer 3s linear infinite;
+  }
+  
+  .btn-glow:hover::after {
+    opacity: 0.5;
+  }
+  
+  .btn-glass-glow {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-glass-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .btn-glass-glow:hover::before {
+    left: 100%;
+  }
+  
+  /* Shimmer text effect */
+  .shimmer-text {
+    background: linear-gradient(90deg, var(--orange), var(--purple), var(--orange));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-shimmer 4s ease-in-out infinite;
+  }
+  
+  /* Badge shimmer */
+  .badge-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .badge-shimmer::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 60%
+    );
+    animation: badge-shimmer 3s ease-in-out infinite;
+  }
+  
+  /* Animated mesh gradient background */
+  .animated-gradient {
+    background: 
+      radial-gradient(at 40% 20%, rgba(255, 107, 53, 0.15) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, rgba(0, 212, 255, 0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, rgba(168, 85, 247, 0.1) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, rgba(255, 217, 61, 0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(255, 107, 157, 0.1) 0px, transparent 50%);
+    animation: gradient-shift 20s ease-in-out infinite;
+  }
 }
 
 @keyframes float {
@@ -234,5 +342,50 @@
   }
   50% {
     opacity: 1;
+  }
+}
+
+@keyframes text-shimmer {
+  0% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
+}
+
+@keyframes badge-shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    transform: scale(1) translate(0, 0);
+  }
+  25% {
+    transform: scale(1.1) translate(-2%, 2%);
+  }
+  50% {
+    transform: scale(1) translate(2%, -2%);
+  }
+  75% {
+    transform: scale(1.1) translate(-1%, 1%);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
   }
 }
